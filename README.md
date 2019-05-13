@@ -1,2 +1,2 @@
-# Freecodecamp-frontend-tasks
-This repository for FCC frontend tasks solving
+# Quote-Machine
+This repository for FCC frontend task solving
