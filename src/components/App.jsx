@@ -32,19 +32,19 @@ class App extends Component {
                     quote={this.state.quote}
                     author={this.state.author}
                 />
+                <a id="tweet-quote"
+                   className="twitter-share-button"
+                   href={"https://twitter.com/intent/tweet?hashtags=quotes&text="
+                    + this.state.quote + " " + this.state.author}
+                >
+                    <FontAwesomeIcon icon={faTwitter} />
+                </a>
                 <button
                     id="new-quote"
                     onClick={() => this.getQuote()}
                 >
                     New Quote
                 </button>
-                    <a id="tweet-quote"
-                       className="twitter-share-button"
-                       href={"https://twitter.com/intent/tweet?hashtags=quotes&text="
-                        + this.state.quote + " " + this.state.author}
-                    >
-                        <FontAwesomeIcon icon={faTwitter} />
-                    </a>
             </div>
         );
     }

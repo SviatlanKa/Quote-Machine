@@ -11,34 +11,41 @@ body {
 
 #root{
     display: flex;
-    border: 1px solid red;
 }
 footer {
     text-align: center;
 }
 
 #quote-box {
-    width: 30vw;
+    width: 40vw;
     min-width: 200px;
     height: max-content;
     min-height: max-content;
     background-color: aliceblue;
     margin: auto;
+    padding: 3vw;
+    text-align: justify;
 }
 
 #text {
-    font-family: 'Rai';
-    font-size: 2em;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.7em;
 }
 
 #author {
-
-}
-
-#new-quote {
-
+    font-family: 'Lato', sans-serif;
+    font-style: italic;
+    font-size: 1.6em;
+    margin: 2vh 5vh;
+    text-align: right;
 }
 
 #tweet-quote {
-
+     font-size: 2em;
 }
+
+#new-quote {
+    float: right;
+    font-size: 1.1em;
+
+    }
