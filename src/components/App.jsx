@@ -21,7 +21,7 @@ class App extends Component {
             })
         console.log('state', this.state);
     }
-    componentWillMount() {
+    componentDidMount() {
       this.getQuote();
     }
 
@@ -45,15 +45,6 @@ class App extends Component {
                     >
                         <FontAwesomeIcon icon={faTwitter} />
                     </a>
-                <button id="tweet-quote"
-                  onClick={() => {
-                    const tweetQuote = `https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=${this.state.quote} ${this.state.author}`
-                    return (
-                      <a href={tweetQuote}>Wow</a>
-                    )
-                  }}>
-                  <FontAwesomeIcon icon={faTwitterSquare} />
-                </button>
             </div>
         );
     }

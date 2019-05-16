@@ -1,4 +1,44 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway|Lato:400,700');
+
 body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin: 0;
+    height: 100vh;
+}
+
+#root{
+    display: flex;
+    border: 1px solid red;
+}
+footer {
     text-align: center;
 }
 
+#quote-box {
+    width: 30vw;
+    min-width: 200px;
+    height: max-content;
+    min-height: max-content;
+    background-color: aliceblue;
+    margin: auto;
+}
+
+#text {
+    font-family: 'Rai';
+    font-size: 2em;
+}
+
+#author {
+
+}
+
+#new-quote {
+
+}
+
+#tweet-quote {
+
+}
