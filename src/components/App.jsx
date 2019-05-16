@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitterSquare} from "@fortawesome/free-brands-svg-icons";
+import { faTwitter} from "@fortawesome/free-brands-svg-icons";
 import Quote from './Quote.jsx';
+import '../index.css';
 
 class App extends Component {
     constructor(props){
@@ -37,6 +38,13 @@ class App extends Component {
                 >
                     New Quote
                 </button>
+                    <a id="tweet-quote"
+                       className="twitter-share-button"
+                       href={"https://twitter.com/intent/tweet?hashtags=quotes&text="
+                        + this.state.quote + " " + this.state.author}
+                    >
+                        <FontAwesomeIcon icon={faTwitter} />
+                    </a>
                 <button id="tweet-quote"
                   onClick={() => {
                     const tweetQuote = `https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=${this.state.quote} ${this.state.author}`
