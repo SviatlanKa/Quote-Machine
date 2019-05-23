@@ -2,50 +2,95 @@
 
 body {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
     margin: 0;
-    height: 100vh;
+    font-family: 'Lato', sans-serif;
+    overflow: hidden;
 }
 
 #root{
     display: flex;
-}
-footer {
-    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 100vw;
+    height: 100vh;
+    background: url('./background-image.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
 #quote-box {
-    width: 40vw;
-    min-width: 200px;
+    width: 34vw;
     height: max-content;
-    min-height: max-content;
-    background-color: aliceblue;
-    margin: auto;
-    padding: 3vw;
+    margin: 0 auto;
     text-align: justify;
 }
 
 #text {
     font-family: 'Raleway', sans-serif;
-    font-size: 1.7em;
+    font-size: 1.4em;
+    padding: 1vh 1vw;
 }
 
 #author {
-    font-family: 'Lato', sans-serif;
     font-style: italic;
-    font-size: 1.6em;
-    margin: 2vh 5vh;
+    font-size: 1.3em;
+    margin: 0 2vw;
     text-align: right;
 }
 
-#tweet-quote {
-     font-size: 2em;
+#new-quote, .tweet-quote {
+    margin: 2vh 1vw;
+    font-size: 1.1em;
+    float: right;
 }
 
-#new-quote {
-    float: right;
-    font-size: 1.1em;
+.twitter-share-button {
+    text-decoration: none;
+    color: #23A4FF;
+}
+
+@media screen and (max-width: 1200px) and (min-width: 640px) {
+    #text {
+        font-size: 1em;
+    }
+
+    #author {
+        font-size: .8em;
+    }
+
+    #new-quote, .tweet-quote {
+        font-size: .7em;
+    }
+}
+
+@media screen and (max-height: 355px){
+    #text {
+        font-size: .6em;
+    }
+}
+
+@media screen and (max-width: 639px){
+    body {
+        background-color: #FF5652;
 
     }
+    #root {
+        background-image: none;
+
+    }
+    #quote-box {
+        width: 80vw;
+        height: max-content;
+        margin: 0 auto;
+        box-shadow: 2px 2px 5px dimgray;
+        background-color: white;
+        padding: 5vh 5vw;
+    }
+    #text {
+        font-size: 1.3em;
+    }
+
+    #author {
+        font-size: 1.2em;
+    }
+}
