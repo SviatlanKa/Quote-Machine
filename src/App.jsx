@@ -1,69 +1,65 @@
 import React,  { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter} from "@fortawesome/free-brands-svg-icons";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import './index.css';
 
 function App() {
     const [quote, setQuote] = useState('');
     const [author, setAuthor] = useState('');
-    const [newQuote, setNewQuote] = useState(false);
+    const [darkMode, setDarkMode] = useState(false);
+
+    const fetchQuote = async () => {
+        try {
+            const response = await fetch('https://api.api-ninjas.com/v1/quotes?category=computers', {
+                method: 'GET',
+                headers: {'X-Api-Key': 'XKmO1cLp4aRQ8tXEDEuFDA==ELoy4RneFSpcvUhR'},
+            });
+            const data = await response.json();
+            const {quote, author} = data[0];
+            setQuote(quote);
+            setAuthor(author);
+        } catch (error) {
+            console.error('Error fetching quote', error);
+        }
+    }
 
     useEffect(() => {
-        fetch('https://api.api-ninjas.com/v1/quotes?category=computers', {
-            method: 'GET',
-            headers: {'X-Api-Key': 'XKmO1cLp4aRQ8tXEDEuFDA==ELoy4RneFSpcvUhR'
-            },
-            contentType: 'application/json'})
-            .then(response =>
-                response.json())
-            .then(json => {
-                const { quote, author } = json[0];
-                setQuote(quote);
-                setAuthor(author);
-            });
+        fetchQuote().catch(error => {
+            console.error("Error in UseEffect", error);
+        })
     }, []);
 
-    useEffect(() => {
-        if (newQuote) {
-            fetch('https://api.api-ninjas.com/v1/quotes?category=computers', {
-                method: 'GET',
-                headers: {
-                    'X-Api-Key': 'XKmO1cLp4aRQ8tXEDEuFDA==ELoy4RneFSpcvUhR'
-                },
-                contentType: 'application/json'
-            })
-                .then(response =>
-                    response.json())
-                .then(json => {
-                    const {quote, author} = json[0];
-                    setQuote(quote);
-                    setAuthor(author);
-                });
-            return () =>  setNewQuote(false);
-        }
-    }, [newQuote]);
+    const handleQuote = async () => {
+       await fetchQuote();
+    }
+
+    const handleMode = () => {
+        setDarkMode(!darkMode);
+    }
 
     return(
-        <div id="quote-box">
-            <div>
-                <div id="text">{quote}</div>
-                <div id="author">{author}</div>
+        <div className={darkMode ? "dark-mode" : ''}>
+            <div className="dark-mode-toggle" onClick={handleMode}>
+                <FontAwesomeIcon icon={darkMode ? faSun : faMoon } />
             </div>
-            <button
-                id="new-quote"
-                onClick={() => setNewQuote(true)}
-            >
-                New Quote
-            </button>
-            <button className="tweet-quote">
-                <a
-                    className="twitter-share-button"
-                    href={`https://twitter.com/intent/tweet?hashtags=quotes&text=${quote} ${author}`}
-                    id="tweet-quote"
-                >
-                    <FontAwesomeIcon icon={faTwitter} /> Tweet
-                </a>
-            </button>
+            <div className="quote-box">
+                <div>
+                    <div className="quote-text">{quote}</div>
+                    <div className="quote-author">{author}</div>
+                </div>
+                <div className="btn-group">
+                    <button className="new-quote-btn" onClick={handleQuote}>New Quote</button>
+                    <button className="tweet-quote-btn">
+                        <a className="twitter-share-link"
+                           href={`https://twitter.com/intent/tweet?hashtags=quotes&text=${quote} ${author}`}
+                           id="tweet-quote"
+                        >
+                            <FontAwesomeIcon icon={faTwitter} /> Tweet
+                        </a>
+                    </button>
+                </div>
+            </div>
         </div>
     )
 }
